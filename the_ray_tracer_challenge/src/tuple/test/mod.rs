@@ -14,4 +14,12 @@ mod tests {
         assert_eq!(t.z, 3.0);
         assert_eq!(t.w, 4.0);
     }
+
+    #[test]
+    fn sum_of_two_tuples() {
+        let t1 = Tuple::new(3.0, -2.0, 5.0, 1.0);
+        let t2 = Tuple::new(-2.0, 3.0, 1.0, 0.5);
+
+        assert_eq!(t1 + t2, Tuple::new(1.0, 1.0, 6.0, 1.5));
+    }
 }
