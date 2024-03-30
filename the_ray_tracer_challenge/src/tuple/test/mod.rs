@@ -1,3 +1,6 @@
+mod point;
+mod vector;
+
 #[cfg(test)]
 mod tests {
     use crate::tuple::model::Tuple;
