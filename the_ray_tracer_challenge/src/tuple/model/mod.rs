@@ -1,3 +1,5 @@
+use std::ops;
+
 pub struct Tuple {
     pub x: f64,
     pub y: f64,
@@ -24,5 +26,18 @@ impl Tuple {
 
     pub fn is_vector(&self) -> bool {
         self.w == 0.0
+    }
+}
+
+impl ops::Add<Tuple> for Tuple {
+    type Output = Tuple;
+
+    fn add(self, other: Tuple) -> Tuple {
+        Tuple {
+            x: self.x + other.x,
+            y: self.y + other.y,
+            z: self.z + other.z,
+            w: self.w + other.w,
+        }
     }
 }
