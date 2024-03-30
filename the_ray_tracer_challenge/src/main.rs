@@ -1,4 +1,5 @@
 mod point;
+mod utils;
 mod vector;
 
 fn main() {
