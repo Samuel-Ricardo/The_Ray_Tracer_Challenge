@@ -20,6 +20,7 @@ mod tests {
         assert_eq!(p.is_point(), true);
     }
 
+    #[test]
     fn not_is_pointer_verifier() {
         let p = Tuple::Vector(1.0, 2.0, 3.0);
 
