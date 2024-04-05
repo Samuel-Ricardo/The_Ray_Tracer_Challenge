@@ -1,4 +1,5 @@
 mod math;
+mod point;
 mod vector;
 
 #[derive(Copy, Clone, Debug, PartialEq)]
@@ -12,13 +13,5 @@ pub struct Tuple {
 impl Tuple {
     pub fn new(x: f64, y: f64, z: f64, w: f64) -> Tuple {
         Tuple { x, y, z, w }
-    }
-
-    pub fn Point(x: f64, y: f64, z: f64) -> Tuple {
-        Tuple { x, y, z, w: 1.0 }
-    }
-
-    pub fn is_point(&self) -> bool {
-        self.w == 1.0
     }
 }
