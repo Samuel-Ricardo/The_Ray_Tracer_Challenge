@@ -91,4 +91,12 @@ mod tests {
 
         assert_eq!(vector.normalize(), expected);
     }
+
+    #[test]
+    fn magnitude_of_a_normalized_vector() {
+        let v = Tuple::Vector(1.0, 2.0, 3.0);
+        let expected = 1.0;
+
+        assert_eq!(v.normalize().magnitude(), expected);
+    }
 }
