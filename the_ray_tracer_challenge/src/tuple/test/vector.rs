@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crate::tuple::model::Tuple;
+    use crate::tuple::{model::Tuple, test};
 
     #[test]
     fn vector_initialize_correctly() {
@@ -82,5 +82,13 @@ mod tests {
         let expected = Tuple::Vector(1.0, 0.0, 0.0);
 
         assert_eq!(v.normalize(), expected);
+    }
+
+    #[test]
+    fn normalize_vector_1_2_3() {
+        let vector = Tuple::Vector(1.0, 2.0, 3.0);
+        let expected = Tuple::Vector(0.26726, 0.53452, 0.80178);
+
+        assert_eq!(vector.normalize(), expected);
     }
 }
