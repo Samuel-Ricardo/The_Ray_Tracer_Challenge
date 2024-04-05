@@ -42,3 +42,16 @@ impl ops::Add<Tuple> for Tuple {
         }
     }
 }
+
+impl ops::Sub<Tuple> for Tuple {
+    type Output = Tuple;
+
+    fn sub(self, other: Tuple) -> Self::Output {
+        Tuple {
+            x: self.x - other.x,
+            y: self.y - other.y,
+            z: self.z - other.z,
+            w: self.w - other.w,
+        }
+    }
+}
