@@ -75,4 +75,12 @@ mod tests {
 
         assert_eq!(v.magnitude(), expected);
     }
+
+    #[test]
+    fn normalize_vector_4_0_0() {
+        let v = Tuple::Vector(4.0, 0.0, 0.0);
+        let expected = Tuple::Vector(1.0, 0.0, 0.0);
+
+        assert_eq!(v.normalize(), expected);
+    }
 }
