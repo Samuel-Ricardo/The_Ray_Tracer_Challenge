@@ -55,3 +55,16 @@ impl ops::Sub<Tuple> for Tuple {
         }
     }
 }
+
+impl ops::Neg for Tuple {
+    type Output = Tuple;
+
+    fn neg(self) -> Self::Output {
+        Tuple {
+            x: -self.x,
+            y: -self.y,
+            z: -self.z,
+            w: -self.w,
+        }
+    }
+}
