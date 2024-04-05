@@ -1,5 +1,16 @@
+use crate::utils::f64_fuzzy_eq;
+
 use super::Tuple;
 use std::ops;
+
+impl PartialEq for Tuple {
+    fn eq(&self, other: &Self) -> bool {
+        f64_fuzzy_eq(self.x, other.x)
+            && f64_fuzzy_eq(self.y, other.y)
+            && f64_fuzzy_eq(self.z, other.z)
+            && f64_fuzzy_eq(self.w, other.w)
+    }
+}
 
 impl ops::Add<Tuple> for Tuple {
     type Output = Tuple;

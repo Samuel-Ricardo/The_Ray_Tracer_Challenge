@@ -2,7 +2,7 @@ mod math;
 mod point;
 mod vector;
 
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug)]
 pub struct Tuple {
     pub x: f64,
     pub y: f64,
