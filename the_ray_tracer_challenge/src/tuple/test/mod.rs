@@ -81,4 +81,13 @@ mod tests {
         let expected: Tuple = Tuple::new(0.5, -1.0, 1.5, -2.0);
         assert_eq!(tuple / SCALAR, expected);
     }
+
+    #[test]
+    fn dividing_by_fraction() {
+        const FRACTION: f64 = 0.5;
+        let tuple: Tuple = Tuple::new(1.0, -2.0, 3.0, -4.0);
+
+        let expected: Tuple = Tuple::new(2.0, -4.0, 6.0, -8.0);
+        assert_eq!(tuple / FRACTION, expected);
+    }
 }
