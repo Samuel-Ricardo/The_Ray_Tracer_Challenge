@@ -8,4 +8,8 @@ impl Tuple {
     pub fn is_vector(&self) -> bool {
         self.w == 0.0
     }
+
+    pub fn magnitude(&self) -> f64 {
+        (self.x.powi(2) + self.y.powi(2) + self.z.powi(2) + self.w.powi(2)).sqrt()
+    }
 }
