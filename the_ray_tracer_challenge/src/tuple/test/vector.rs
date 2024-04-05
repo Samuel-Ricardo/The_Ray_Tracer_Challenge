@@ -38,4 +38,41 @@ mod tests {
         assert_eq!(result, expected);
         assert!(result.is_vector());
     }
+
+    #[test]
+    fn compute_magnitude_of_vector_1_0_0() {
+        let v = Tuple::Vector(1.0, 0.0, 0.0);
+
+        assert_eq!(v.magnitude(), 1.0);
+    }
+
+    #[test]
+    fn compute_magnitude_of_vector_0_1_0() {
+        let v = Tuple::Vector(0.0, 1.0, 0.0);
+
+        assert_eq!(v.magnitude(), 1.0);
+    }
+
+    #[test]
+    fn compute_magnitude_of_vector_0_0_1() {
+        let v = Tuple::Vector(0.0, 0.0, 1.0);
+
+        assert_eq!(v.magnitude(), 1.0);
+    }
+
+    #[test]
+    fn compute_magnitude_of_vector_1_2_3() {
+        let v = Tuple::Vector(1.0, 2.0, 3.0);
+        let expected = 14.0_f64.sqrt();
+
+        assert_eq!(v.magnitude(), expected);
+    }
+
+    #[test]
+    fn compute_magnitude_of_negative_vector_1_2_3() {
+        let v = Tuple::Vector(-1.0, -2.0, -3.0);
+        let expected = 14.0_f64.sqrt();
+
+        assert_eq!(v.magnitude(), expected);
+    }
 }
