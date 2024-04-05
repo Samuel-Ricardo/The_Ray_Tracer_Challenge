@@ -63,4 +63,13 @@ mod tests {
         let expected: Tuple = Tuple::new(7.0, -14.0, 21.0, -28.0);
         assert_eq!(tuple * SCALAR, expected);
     }
+
+    #[test]
+    fn multiplying_a_tuple_by_a_fraction() {
+        const FRACTION: f64 = 0.5;
+        let tuple: Tuple = Tuple::new(1.0, -2.0, 3.0, -4.0);
+
+        let expected: Tuple = Tuple::new(0.5, -1.0, 1.5, -2.0);
+        assert_eq!(tuple * FRACTION, expected);
+    }
 }
