@@ -54,4 +54,13 @@ mod tests {
 
         assert_eq!(-t, expected);
     }
+
+    #[test]
+    fn multiplying_a_tuple_by_a_scalar() {
+        const SCALAR: f64 = 2.0;
+        let tuple: Tuple = Tuple::new(3.5, -7.0, 10.5, -14.0);
+
+        let expected: Tuple = Tuple::new(7.0, -14.0, 21.0, -28.0);
+        assert_eq!(tuple * SCALAR, expected);
+    }
 }
