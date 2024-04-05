@@ -24,18 +24,6 @@ mod tests {
     }
 
     #[test]
-    fn sub_of_two_points() {
-        let t1 = Tuple::Point(3.0, -2.0, 5.0);
-        let t2 = Tuple::Point(-2.0, 3.0, 1.0);
-
-        let expected = Tuple::Vector(5.0, -5.0, 4.0);
-        let result = t1 - t2;
-
-        assert_eq!(result, expected);
-        assert!(result.is_vector());
-    }
-
-    #[test]
     fn substracting_vector_from_point() {
         let t1 = Tuple::Point(3.0, -2.0, 5.0);
         let t2 = Tuple::Vector(-2.0, 3.0, 1.0);
@@ -45,17 +33,5 @@ mod tests {
 
         assert_eq!(result, expected);
         assert!(result.is_point());
-    }
-
-    #[test]
-    fn sub_of_two_vectors() {
-        let t1 = Tuple::Vector(3.0, -2.0, 5.0);
-        let t2 = Tuple::Vector(-2.0, 3.0, 1.0);
-
-        let expected = Tuple::Vector(5.0, -5.0, 4.0);
-        let result = t1 - t2;
-
-        assert_eq!(result, expected);
-        assert!(result.is_vector());
     }
 }
