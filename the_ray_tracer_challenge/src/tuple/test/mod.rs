@@ -34,4 +34,16 @@ mod tests {
         assert_eq!(result, expected);
         assert!(result.is_point());
     }
+
+    #[test]
+    fn substracting_a_vector_from_a_vector() {
+        let zero = Tuple::Vector(0.0, 0.0, 0.0);
+        let vector = Tuple::Vector(2.0, 3.0, 1.0);
+
+        let expected = Tuple::Vector(-2.0, -3.0, -1.0);
+        let result = zero - vector;
+
+        assert_eq!(result, expected);
+        assert!(result.is_vector());
+    }
 }
