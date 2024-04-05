@@ -68,3 +68,16 @@ impl ops::Neg for Tuple {
         }
     }
 }
+
+impl ops::Mul<f64> for Tuple {
+    type Output = Tuple;
+
+    fn mul(self, other: f64) -> Self::Output {
+        Tuple {
+            x: self.x * other,
+            y: self.y * other,
+            z: self.z * other,
+            w: self.w * other,
+        }
+    }
+}
