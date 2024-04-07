@@ -108,4 +108,13 @@ mod tests {
         const EXPECTED: f64 = 20.0;
         assert_eq!(v1.dot(&v2), EXPECTED);
     }
+
+    #[test]
+    fn cross_2_vectors() {
+        let v1 = Tuple::Vector(1.0, 2.0, 3.0);
+        let v2 = Tuple::Vector(2.0, 3.0, 4.0);
+
+        let expected = Tuple::Vector(-1.0, 2.0, -1.0);
+        assert_eq!(v1.cross(&v2), expected);
+    }
 }
