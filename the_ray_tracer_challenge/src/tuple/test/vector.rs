@@ -117,4 +117,13 @@ mod tests {
         let expected = Tuple::Vector(-1.0, 2.0, -1.0);
         assert_eq!(v1.cross(&v2), expected);
     }
+
+    #[test]
+    fn cross_2_vectors_inverted() {
+        let v1 = Tuple::Vector(1.0, 2.0, 3.0);
+        let v2 = Tuple::Vector(2.0, 3.0, 4.0);
+
+        let expected = Tuple::Vector(1.0, -2.0, 1.0);
+        assert_eq!(v2.cross(&v1), expected);
+    }
 }
