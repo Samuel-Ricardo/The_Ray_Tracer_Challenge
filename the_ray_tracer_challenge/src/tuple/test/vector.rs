@@ -99,4 +99,13 @@ mod tests {
 
         assert_eq!(v.normalize().magnitude(), expected);
     }
+
+    #[test]
+    fn dot_product_of_vectors() {
+        let v1 = Tuple::Vector(1.0, 2.0, 3.0);
+        let v2 = Tuple::Vector(2.0, 3.0, 4.0);
+
+        const EXPECTED: f64 = 20.0;
+        assert_eq!(v1.dot(&v2), EXPECTED);
+    }
 }
