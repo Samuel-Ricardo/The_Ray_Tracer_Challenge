@@ -16,4 +16,8 @@ impl Tuple {
     pub fn normalize(&self) -> Tuple {
         *self / self.magnitude()
     }
+
+    pub fn dot(&self, other: &Tuple) -> f64 {
+        self.x * other.x + self.y * other.y + self.z * other.z + self.w * other.w
+    }
 }
