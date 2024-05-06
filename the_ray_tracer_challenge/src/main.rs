@@ -3,6 +3,7 @@ use tuple::model::Tuple;
 
 use crate::scene::tick;
 
+mod canvas;
 mod scene;
 mod tuple;
 mod utils;
