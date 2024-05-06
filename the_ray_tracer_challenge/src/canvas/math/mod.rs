@@ -1,5 +1,7 @@
 use std::ops::{Add, Mul, Sub};
 
+use crate::utils::f64_fuzzy_eq;
+
 use super::model::color::Color;
 
 impl Add for Color {
@@ -43,5 +45,13 @@ impl Mul<f64> for Color {
 
     fn mul(self, other: f64) -> Self::Output {
         Color::new(self.red * other, self.green * other, self.blue * other)
+    }
+}
+
+impl PartialEq for Color {
+    fn eq(&self, other: &Self) -> bool {
+        f64_fuzzy_eq(self.red, other.red)
+            && f64_fuzzy_eq(self.green, other.green)
+            && f64_fuzzy_eq(self.blue, other.blue)
     }
 }
