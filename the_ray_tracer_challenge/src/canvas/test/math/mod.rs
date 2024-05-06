@@ -17,4 +17,12 @@ mod test {
 
         assert_eq!(Color::new(0.2, 0.5, 0.5), c1 - c2);
     }
+
+    #[test]
+    fn multiplying_color_by_scalar() {
+        let c = Color::new(0.2, 0.3, 0.4);
+        let scalar = 2.0;
+
+        assert_eq!(Color::new(0.4, 0.6, 0.8), c * scalar);
+    }
 }
