@@ -1,5 +1,6 @@
 #[cfg(test)]
 mod tests {
+    use crate::canvas::model::color::Color;
 
     fn create_new_rgb_color() {
         let c = Color::new(2.0, 0.5, 1.0);
