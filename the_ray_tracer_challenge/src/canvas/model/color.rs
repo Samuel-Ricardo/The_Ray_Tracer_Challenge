@@ -9,4 +9,8 @@ impl Color {
     pub fn new(red: f64, green: f64, blue: f64) -> Color {
         Color { red, green, blue }
     }
+
+    pub fn black() -> Color {
+        Color::new(0.0, 0.0, 0.0)
+    }
 }
