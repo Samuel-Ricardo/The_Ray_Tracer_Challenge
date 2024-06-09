@@ -1,5 +1,5 @@
 #[cfg(test)]
-mod canvas_model_tests {
+mod tests {
     use crate::canvas::model::{color::Color, Canvas};
 
     #[test]
@@ -11,8 +11,13 @@ mod canvas_model_tests {
 
         for x in 0..c.width - 1 {
             for y in 0..c.height - 1 {
-                assert_eq!(*c.color_at(x, y), Color::black());
+                assert_eq!(*c.pixel_at(x, y), Color::black());
             }
         }
+    }
+
+    #[test]
+    fn write_pixels_to_a_canvas {
+            
     }
 }
