@@ -17,4 +17,9 @@ impl Canvas {
             pixels: vec![Color::black(); width * height],
         }
     }
+
+    pub fn color_at(&self, x: usize, y: usize) -> &Color {
+        let index = y * self.width + x;
+        &self.pixels[index]
+    }
 }
