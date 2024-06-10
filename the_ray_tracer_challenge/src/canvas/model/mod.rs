@@ -22,4 +22,7 @@ impl Canvas {
         let index = y * self.width + x;
         &self.pixels[index]
     }
+    fn get_pixel_index(&self, x: usize, y: usize) -> usize {
+        y * self.width + x
+    }
 }
