@@ -22,6 +22,12 @@ impl Canvas {
         let index = y * self.width + x;
         &self.pixels[index]
     }
+
+    pub fn write_pixel(&mut self, x: usize, y: usize, color: Color) {
+        let index = self.get_pixel_index(x, y);
+        self.pixels[index] = color;
+    }
+
     fn get_pixel_index(&self, x: usize, y: usize) -> usize {
         y * self.width + x
     }
