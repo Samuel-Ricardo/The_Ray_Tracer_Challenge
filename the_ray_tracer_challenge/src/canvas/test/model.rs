@@ -17,7 +17,14 @@ mod tests {
     }
 
     #[test]
-    fn write_pixels_to_a_canvas {
-            
+    fn write_pixels_to_a_canvas() {
+        let mut c = Canvas::new(10, 28);
+
+        let red = Color::new(1.0, 0.0, 0.0);
+        let expected = Color::new(1.0, 0.0, 0.0);
+
+        c.write_pixel(2, 3, red);
+
+        assert_eq!(*c.pixel_at(2, 3), expected);
     }
 }
