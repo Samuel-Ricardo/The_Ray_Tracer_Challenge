@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod ppm_tests {
-    use crate::canvas::model::Canvas;
+    use crate::canvas::model::{ppm::PpmConvertible, Canvas};
 
     #[test]
     fn build_ppm_header() {
@@ -14,7 +14,8 @@ mod ppm_tests {
         const HEIGHT: &str = "3";
         const MAX_COLOR_VALUE: &str = "255";
 
-        const EXPECTED_RESULT: &str = "P3\n5 3\n255\n";
+        let EXPECTED_RESULT =
+            format!("{FILE_TYPE_IDENTIFIER}\n{WIDTH} {HEIGHT}\n{MAX_COLOR_VALUE}\n");
 
         assert_eq!(EXPECTED_RESULT.as_bytes(), actual_result);
     }
