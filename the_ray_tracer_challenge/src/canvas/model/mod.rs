@@ -57,8 +57,18 @@ impl Canvas {
 
         let mut pixel_data: Vec<u8> = Vec::new();
         let mut column_count: usize = 0;
+        let mut last_image_row: usize = 0;
 
-        for pixel_string in pixel_strings.iter() {
+        for (i, pixel_string) in pixel_strings.iter().enumerate() {
+            let current_image_row = i / (self.width * 3);
+
+            //INFO: LINE BREAK FOR EACH ROW
+            if current_image_row != last_image_row {
+                last_image_row = current_image_row;
+                pixel_data.extend(String::from("\n").into_bytes());
+                column_count = 0;
+            }
+
             let mut needed_space: usize = 0;
 
             if column_count != 0 {
@@ -67,6 +77,7 @@ impl Canvas {
 
             needed_space += pixel_string.len();
 
+            //INFO: 70 CHARACTERS PER LINE LIMIT
             if column_count + needed_space > 70 {
                 pixel_data.extend(String::from("\n").into_bytes());
                 column_count = 0;
@@ -74,11 +85,14 @@ impl Canvas {
 
             if column_count != 0 {
                 pixel_data.extend(String::from(" ").into_bytes());
+                column_count += 1;
             }
 
             pixel_data.extend(pixel_string.clone().into_bytes());
+            column_count += pixel_string.len();
         }
 
+        //INFO: BREAK LINE AT END OF DATA
         pixel_data.extend(String::from("\n").into_bytes());
 
         return pixel_data;
