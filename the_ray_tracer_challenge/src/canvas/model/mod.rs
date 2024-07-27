@@ -1,6 +1,7 @@
 use self::color::Color;
 
 pub mod color;
+pub mod ppm;
 
 pub struct Canvas {
     pub width: usize,
