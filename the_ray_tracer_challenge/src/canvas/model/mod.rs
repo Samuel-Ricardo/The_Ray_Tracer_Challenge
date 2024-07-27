@@ -1,7 +1,12 @@
-use self::color::Color;
+use self::{color::Color, ppm::PPM_Convertible};
 
 pub mod color;
 pub mod ppm;
+
+pub trait Sized {
+    fn width(&self) -> usize;
+    fn height(&self) -> usize;
+}
 
 pub struct Canvas {
     pub width: usize,
