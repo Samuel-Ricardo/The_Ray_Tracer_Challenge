@@ -47,4 +47,29 @@ mod tests {
 
         assert_eq!(expected_result, actual_result);
     }
+
+    #[test]
+    fn splitting_lang_lines_ppm_file() {
+        let mut canvas = Canvas::new(10, 2);
+        let color = Color::new(1.0, 0.8, 0.6);
+
+        for x in 0..10 {
+            for y in 0..2 {
+                canvas.write_pixel(x, y, color);
+            }
+        }
+
+        let actual_result = canvas.to_ppm();
+
+        let header = String::from("P3\n10 2\n255\n").into_bytes();
+        let pixel_data = String::from(
+          "255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204\n153 255 204 153 255 204 153 255 204 153 255 204 153\n255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204\n153 255 204 153 255 204 153 255 204 153 255 204 153\n",
+        ).into_bytes();
+
+        let mut expected_result: Vec<u8> = Vec::new();
+        expected_result.extend(header);
+        expected_result.extend(pixel_data);
+
+        assert_eq!(actual_result, expected_result);
+    }
 }
