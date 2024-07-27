@@ -1,38 +1,50 @@
-use crate::{canvas::model::Canvas, tuple::model::Tuple};
+use std::fs::write;
 
-enum Pixel {
-    Coordinate { x: usize, y: usize },
-    OutOfBounds,
-}
+use crate::{
+    canvas::model::{color::Color, ppm::PpmConvertible, Canvas},
+    scene::{
+        model::{Environment, Pixel, Projectile},
+        tick,
+    },
+    tuple::model::Tuple,
+};
 
-impl Pixel {
-    pub fn from_point_for_canvas(point: Tuple, canvas: &Canvas) -> Pixel {
-        if !point.is_point() {
-            panic!("Given tuple is not a point. Point needed for conversion to screen space.");
+pub fn simulate_a_launch_and_plot_result_as_ppm() {
+    let environment = Environment::new(
+        Tuple::Vector(0.0, -0.1, 0.0),
+        Tuple::Vector(-0.02, 0.0, 0.0),
+    );
+
+    let projectile = Projectile::new(
+        Tuple::Point(0.0, 1.0, 0.0),
+        Tuple::Vector(1.0, 1.8, 0.0).normalize() * 11.25,
+    );
+
+    let mut canvas = Canvas::new(900, 500);
+    let color = Color::new(1.0, 1.0, 0.0);
+
+    print!("{:?}", environment);
+
+    let mut current = projectile;
+    let mut iteration: i32 = 0;
+
+    while current.position.y > 0.0 {
+        println!("{}: {:?}", iteration, current);
+
+        match Pixel::from_point_for_canvas(current.position, &canvas) {
+            Pixel::Coordinate { x, y } => canvas.write_pixel(x, y, color),
+            Pixel::OutOfBounds => {}
         }
 
-        let rx = point.x.round();
-        let ry = point.y.round();
-
-        let ux = rx as usize;
-        let uy = ry as usize;
-
-        if rx.is_sign_negative() || ry.is_sign_negative() || ux > canvas.width || uy > canvas.height
-        {
-            return Pixel::OutOfBounds;
-        }
-
-        // INFO:Invert y axis to fit Screen space as the (0,0) coordinate is top left
-        // and not bottom left
-
-        let screen_x = ux;
-        let screen_y = canvas.height - uy;
-
-        Pixel::Coordinate {
-            x: screen_x,
-            y: screen_y,
-        }
+        current = tick(&environment, &current);
+        iteration += 1;
     }
-}
 
-fn simulate_a_launch_and_plot_result_as_ppm() {}
+    println!("[FINISHED] | SIMULATION => {}: {:?}", iteration, current);
+
+    println!("[WRITING] => ./output.ppm");
+    let ppm = canvas.to_ppm();
+    write("./output.ppm", ppm).expect("Could not write ouput.ppm to disk.");
+
+    println!("[FINISHED] | FILE SAVED => [./output.ppm]");
+}
