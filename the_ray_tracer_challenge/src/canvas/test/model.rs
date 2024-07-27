@@ -11,7 +11,7 @@ mod tests {
 
         for x in 0..c.width - 1 {
             for y in 0..c.height - 1 {
-                assert_eq!(*c.pixel_at(x, y), Color::black());
+                assert_eq!(c.pixel_at(x, y), Color::black());
             }
         }
     }
@@ -25,6 +25,6 @@ mod tests {
 
         c.write_pixel(2, 3, red);
 
-        assert_eq!(*c.pixel_at(2, 3), expected);
+        assert_eq!(c.pixel_at(2, 3), expected);
     }
 }

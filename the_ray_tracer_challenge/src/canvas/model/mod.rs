@@ -18,9 +18,9 @@ impl Canvas {
         }
     }
 
-    pub fn pixel_at(&self, x: usize, y: usize) -> &Color {
+    pub fn pixel_at(&self, x: usize, y: usize) -> Color {
         let index = y * self.width + x;
-        &self.pixels[index]
+        self.pixels[index]
     }
 
     pub fn write_pixel(&mut self, x: usize, y: usize, color: Color) {
