@@ -12,3 +12,16 @@ impl FuzzyEq<f64> for f64 {
         (*self - other).abs() < EPSILON
     }
 }
+
+#[macro_export]
+macro_rules! assert_fuzzy_eq {
+    ($left:expr, $right:expr $(,)?) => {{
+        match (&$left, $right) {
+            (left_val, right_val) => {
+                if left_val.fuzzy_ne(right_val.clone()) {
+                    panic!("assertion failed: `{:?}` != `{:?}`", left_val, right_val);
+                }
+            }
+        }
+    }};
+}
