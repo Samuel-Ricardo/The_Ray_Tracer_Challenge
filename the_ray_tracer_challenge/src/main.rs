@@ -2,6 +2,7 @@ use chapter::{C01::simulate_physics_with_a_launch, C02::simulate_a_launch_and_pl
 
 mod canvas;
 mod chapter;
+mod matrix;
 mod scene;
 mod tuple;
 mod utils;
