@@ -1,6 +1,6 @@
 use std::ops::{Add, Mul, Sub};
 
-use crate::utils::f64_fuzzy_eq;
+use crate::utils::equality::FuzzyEq;
 
 use super::model::color::Color;
 
@@ -50,8 +50,8 @@ impl Mul<f64> for Color {
 
 impl PartialEq for Color {
     fn eq(&self, other: &Self) -> bool {
-        f64_fuzzy_eq(self.red, other.red)
-            && f64_fuzzy_eq(self.green, other.green)
-            && f64_fuzzy_eq(self.blue, other.blue)
+        self.red.fuzzy_eq(other.red)
+            && self.green.fuzzy_eq(other.green)
+            && self.blue.fuzzy_eq(other.blue)
     }
 }
