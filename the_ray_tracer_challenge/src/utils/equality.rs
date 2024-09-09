@@ -19,9 +19,28 @@ macro_rules! assert_fuzzy_eq {
         match (&$left, $right) {
             (left_val, right_val) => {
                 if left_val.fuzzy_ne(right_val.clone()) {
-                    panic!("assertion failed: `{:?}` != `{:?}`", left_val, right_val);
+                    panic!(
+                        "assertion failed they are not fuzzy equal: `{:?}` != `{:?}`",
+                        left_val, right_val
+                    );
                 }
             }
         }
     }};
+}
+
+#[macro_export]
+macro_rules! assert_fuzzy_ne {
+    ($left:expr, $right:expr $(,)?) => {
+        match (&$left, $right) {
+            (left_val, right_val) => {
+                if left_val.fuzzy_eq(right_val.clone()) {
+                    panic!(
+                        "assertion failed they are fuzzy equal: `{:?}` == `{:?}`",
+                        left_val, right_val
+                    );
+                }
+            }
+        }
+    };
 }
