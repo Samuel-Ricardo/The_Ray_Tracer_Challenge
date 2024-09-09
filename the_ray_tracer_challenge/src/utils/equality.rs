@@ -1,3 +1,5 @@
+use super::EPSILON;
+
 pub trait FuzzyEq<T: Clone> {
     fn fuzzy_eq(&self, right: T) -> bool;
     fn fuzzy_ne(&self, right: T) -> bool {
@@ -5,7 +7,8 @@ pub trait FuzzyEq<T: Clone> {
     }
 }
 
-pub fn f64_fuzzy_eq(left: f64, right: f64) -> bool {
-    const EPSILON: f64 = 0.00001;
-    (left - right).abs() < EPSILON
+impl FuzzyEq<f64> for f64 {
+    fn fuzzy_eq(&self, other: f64) -> bool {
+        (*self - other).abs() < EPSILON
+    }
 }
