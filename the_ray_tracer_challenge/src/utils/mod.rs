@@ -1,3 +1,4 @@
+#[macro_use]
 pub mod equality;
 
 type F = f64;

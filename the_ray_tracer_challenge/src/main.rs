@@ -5,6 +5,7 @@ mod chapter;
 mod matrix;
 mod scene;
 mod tuple;
+#[macro_use]
 mod utils;
 
 fn main() {

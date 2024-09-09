@@ -37,7 +37,7 @@ impl<const D: usize> FuzzyEq<Self> for Matrix<D> {
     fn fuzzy_eq(&self, other: Self) -> bool {
         for row in 0..D {
             for column in 0..D {
-                if self.data[row][column].fuzzy_ne(other.data[row][column]) {
+                if self[row][column].fuzzy_ne(other[row][column]) {
                     return false;
                 }
             }
