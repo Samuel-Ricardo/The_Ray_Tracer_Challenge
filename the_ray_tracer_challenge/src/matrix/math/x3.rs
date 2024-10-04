@@ -36,4 +36,8 @@ impl Matrix<3> {
 
         return matrix;
     }
+
+    pub fn minor(&self, row: usize, column: usize) -> f64 {
+        self.submatrix(row, column).determinant()
+    }
 }
