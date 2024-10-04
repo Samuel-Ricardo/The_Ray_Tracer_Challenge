@@ -50,4 +50,14 @@ impl Matrix<3> {
             -minor
         }
     }
+
+    pub fn determinant(&self) -> f64 {
+        let mut determinant = 0.0;
+
+        for column in 0..3 {
+            determinant += self[0][column] * self.cofactor(0, column);
+        }
+
+        return determinant;
+    }
 }
