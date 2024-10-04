@@ -1,9 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crate::{
-        assert_fuzzy_eq, assert_fuzzy_ne, canvas::test, matrix::model::Matrix,
-        utils::equality::FuzzyEq,
-    };
+    use crate::{assert_fuzzy_eq, matrix::model::Matrix, utils::equality::FuzzyEq};
 
     #[test]
     fn transpose_a_4x4_matrix() {
@@ -71,5 +68,21 @@ mod tests {
 
         assert_fuzzy_eq!(25.0, determinant);
         assert_fuzzy_eq!(25.0, minor);
+    }
+
+    #[test]
+    fn cofactor_of_a_3x3_matrix() {
+        let m = Matrix::from([[3.0, 5.0, 0.0], [2.0, -1.0, -7.0], [6.0, -1.0, 5.0]]);
+
+        let minor1 = m.minor(0, 0);
+        let minor2 = m.minor(1, 0);
+
+        let cofactor1 = m.cofactor(0, 0);
+        let cofactor2 = m.cofactor(1, 0);
+
+        assert_fuzzy_eq!(-12.0, minor1);
+        assert_fuzzy_eq!(-12.0, cofactor1);
+        assert_fuzzy_eq!(25.0, minor2);
+        assert_fuzzy_eq!(-25.0, cofactor2);
     }
 }
