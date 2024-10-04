@@ -1,7 +1,8 @@
 #[cfg(test)]
 mod tests {
     use crate::{
-        assert_fuzzy_eq, assert_fuzzy_ne, matrix::model::Matrix, utils::equality::FuzzyEq,
+        assert_fuzzy_eq, assert_fuzzy_ne, canvas::test, matrix::model::Matrix,
+        utils::equality::FuzzyEq,
     };
 
     #[test]
@@ -30,6 +31,16 @@ mod tests {
 
         let expected_result = 17.0;
         let actual_result = m.determinant();
+
+        assert_fuzzy_eq!(actual_result, expected_result);
+    }
+
+    #[test]
+    fn submatrix_of_a_3x3_matrix() {
+        let m = Matrix::from([[1.0, 5.0, 0.0], [-3.0, 2.0, 7.0], [0.0, 6.0, 3.0]]);
+
+        let expected_result = Matrix::from([[-3.0, 2.0], [0.0, 6.0]]);
+        let actual_result = m.submatrix(0, 2);
 
         assert_fuzzy_eq!(actual_result, expected_result);
     }
