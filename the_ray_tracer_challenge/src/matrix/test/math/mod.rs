@@ -60,4 +60,16 @@ mod tests {
 
         assert_fuzzy_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn minor_of_a_3x3_matrix() {
+        let m = Matrix::from([[3.0, 5.0, 0.0], [2.0, -1.0, -7.0], [6.0, -1.0, 5.0]]);
+
+        let sub = m.submatrix(1, 0);
+        let determinant = sub.determinant();
+        let minor = m.minor(1, 0);
+
+        assert_fuzzy_eq!(25.0, determinant);
+        assert_fuzzy_eq!(25.0, minor);
+    }
 }
