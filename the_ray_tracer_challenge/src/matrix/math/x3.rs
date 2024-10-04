@@ -40,4 +40,14 @@ impl Matrix<3> {
     pub fn minor(&self, row: usize, column: usize) -> f64 {
         self.submatrix(row, column).determinant()
     }
+
+    pub fn cofactor(&self, row: usize, column: usize) -> f64 {
+        let minor = self.minor(row, column);
+
+        if (row + column) % 2 == 0 {
+            minor
+        } else {
+            -minor
+        }
+    }
 }
