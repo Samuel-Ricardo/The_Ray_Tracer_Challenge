@@ -44,4 +44,20 @@ mod tests {
 
         assert_fuzzy_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn submatrix_of_a_4x4_matrix() {
+        let m = Matrix::from([
+            [-6.0, 1.0, 1.0, 6.0],
+            [-8.0, 5.0, 8.0, 6.0],
+            [-1.0, 0.0, 8.0, 2.0],
+            [-7.0, 1.0, -1.0, 1.0],
+        ]);
+
+        let expected_result = Matrix::from([[-6.0, 1.0, 6.0], [-8.0, 8.0, 6.0], [-7.0, -1.0, 1.0]]);
+
+        let actual_result = m.submatrix(2, 1);
+
+        assert_fuzzy_eq!(actual_result, expected_result);
+    }
 }
