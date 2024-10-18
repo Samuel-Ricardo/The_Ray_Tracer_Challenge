@@ -1,4 +1,9 @@
-use crate::{matrix::model::Matrix, utils::equality::FuzzyEq};
+use core::panic;
+
+use crate::{
+    matrix::{self, model::Matrix},
+    utils::equality::FuzzyEq,
+};
 
 impl Matrix<4> {
     pub fn submatrix(&self, row: usize, column: usize) -> Matrix<3> {
@@ -62,5 +67,23 @@ impl Matrix<4> {
 
     pub fn is_invertible(&self) -> bool {
         self.determinant().fuzzy_ne(0.0)
+    }
+
+    pub fn inverse(&self) -> Matrix<4> {
+        if !self.is_invertible() {
+            panic!("matrix is not invertible");
+        }
+
+        let mut matrix = Matrix::new();
+        let determinant = self.determinant();
+
+        for row in 0..4 {
+            for column in 0..4 {
+                let cofactor = self.cofactor(row, column);
+                matrix[column][row] = cofactor / determinant;
+            }
+        }
+
+        return matrix;
     }
 }

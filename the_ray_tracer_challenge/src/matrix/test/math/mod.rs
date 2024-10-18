@@ -127,4 +127,19 @@ mod tests {
 
         assert_fuzzy_eq!(-4071.0, determinant);
     }
+
+    #[test]
+    fn testing_an_invertible_matrix_for_invertibility() {
+        let matrix = Matrix::from([
+            [6.0, 4.0, 4.0, 4.0],
+            [5.0, 5.0, 7.0, 6.0],
+            [4.0, -9.0, 3.0, -7.0],
+            [9.0, 1.0, 7.0, -6.0],
+        ]);
+
+        let determinant = matrix.determinant();
+
+        assert_fuzzy_eq!(-2120.0, determinant);
+        assert!(matrix.is_invertible());
+    }
 }
