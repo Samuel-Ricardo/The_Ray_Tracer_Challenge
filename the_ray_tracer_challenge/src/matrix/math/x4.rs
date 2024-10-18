@@ -1,4 +1,5 @@
 use core::panic;
+use std::ops::Mul;
 
 use crate::{
     matrix::{self, model::Matrix},

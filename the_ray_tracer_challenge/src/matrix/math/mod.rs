@@ -1,3 +1,5 @@
+use std::ops::Mul;
+
 use crate::tuple::model::Tuple;
 
 use super::model::Matrix;
