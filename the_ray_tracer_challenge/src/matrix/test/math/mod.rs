@@ -142,4 +142,19 @@ mod tests {
         assert_fuzzy_eq!(-2120.0, determinant);
         assert!(matrix.is_invertible());
     }
+
+    #[test]
+    fn testing_an_noninvertible_matrix_for_invertibility() {
+        let m = Matrix::from([
+            [-4.0, 2.0, -2.0, -3.0],
+            [9.0, 6.0, 2.0, 6.0],
+            [0.0, -5.0, 1.0, -5.0],
+            [0.0, 0.0, 0.0, 0.0],
+        ]);
+
+        let determinant = m.determinant();
+
+        assert_fuzzy_eq!(0.0, determinant);
+        assert!(!m.is_invertible());
+    }
 }
