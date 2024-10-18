@@ -229,4 +229,27 @@ mod tests {
 
         assert_fuzzy_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn multiplying_a_product_by_its_inverse() {
+        let m1 = Matrix::from([
+            [3.0, -9.0, 7.0, 3.0],
+            [3.0, -8.0, 2.0, -9.0],
+            [-4.0, 4.0, 4.0, 1.0],
+            [-6.0, 5.0, -1.0, 1.0],
+        ]);
+
+        let m2 = Matrix::from([
+            [8.0, 2.0, 2.0, 2.0],
+            [3.0, -1.0, 7.0, 0.0],
+            [7.0, 0.0, 5.0, 4.0],
+            [6.0, -2.0, 0.0, 5.0],
+        ]);
+
+        let m3 = m1 * m2;
+
+        let actual_result = m3 * m2.inverse();
+
+        assert_fuzzy_eq!(actual_result, m1);
+    }
 }

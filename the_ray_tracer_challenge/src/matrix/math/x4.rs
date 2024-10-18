@@ -2,8 +2,34 @@ use core::panic;
 
 use crate::{
     matrix::{self, model::Matrix},
+    tuple::model::Tuple,
     utils::equality::FuzzyEq,
 };
+
+impl Mul<Tuple> for Matrix<4> {
+    type Output = Tuple;
+
+    fn mul(self, other: Tuple) -> Self::Output {
+        Tuple::new(
+            self[0][0] * other.x
+                + self[0][1] * other.y
+                + self[0][2] * other.z
+                + self[0][3] * other.w,
+            self[1][0] * other.x
+                + self[1][1] * other.y
+                + self[1][2] * other.z
+                + self[1][3] * other.w,
+            self[2][0] * other.x
+                + self[2][1] * other.y
+                + self[2][2] * other.z
+                + self[2][3] * other.w,
+            self[3][0] * other.x
+                + self[3][1] * other.y
+                + self[3][2] * other.z
+                + self[3][3] * other.w,
+        )
+    }
+}
 
 impl Matrix<4> {
     pub fn submatrix(&self, row: usize, column: usize) -> Matrix<3> {
