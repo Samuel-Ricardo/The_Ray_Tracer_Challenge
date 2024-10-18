@@ -103,4 +103,28 @@ mod tests {
 
         assert_fuzzy_eq!(-196.0, determinant);
     }
+
+    #[test]
+    fn determinant_of_a_4x4_matrix() {
+        let matrix = Matrix::from([
+            [-2.0, -8.0, 3.0, 5.0],
+            [-3.0, 1.0, 7.0, 3.0],
+            [1.0, 2.0, -9.0, 6.0],
+            [-6.0, 7.0, 7.0, -9.0],
+        ]);
+
+        let cofactor00 = matrix.cofactor(0, 0);
+        let cofactor01 = matrix.cofactor(0, 1);
+        let cofactor02 = matrix.cofactor(0, 2);
+        let cofactor03 = matrix.cofactor(0, 3);
+
+        let determinant = matrix.determinant();
+
+        assert_fuzzy_eq!(690.0, cofactor00);
+        assert_fuzzy_eq!(447.0, cofactor01);
+        assert_fuzzy_eq!(210.0, cofactor02);
+        assert_fuzzy_eq!(51.0, cofactor03);
+
+        assert_fuzzy_eq!(-4071.0, determinant);
+    }
 }
