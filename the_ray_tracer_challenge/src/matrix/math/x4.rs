@@ -1,4 +1,4 @@
-use crate::matrix::model::Matrix;
+use crate::{matrix::model::Matrix, utils::equality::FuzzyEq};
 
 impl Matrix<4> {
     pub fn submatrix(&self, row: usize, column: usize) -> Matrix<3> {
@@ -58,5 +58,9 @@ impl Matrix<4> {
         }
 
         return determinant;
+    }
+
+    pub fn is_invertible(&self) -> bool {
+        self.determinant().fuzzy_ne(0.0)
     }
 }
