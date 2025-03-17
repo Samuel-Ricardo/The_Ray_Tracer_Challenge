@@ -1,7 +1,9 @@
 #[cfg(test)]
 mod tests {
     use crate::{
-        assert_fuzzy_eq, assert_fuzzy_ne, matrix::model::Matrix, utils::equality::FuzzyEq,
+        assert_fuzzy_eq, assert_fuzzy_ne,
+        matrix::{self, model::Matrix},
+        utils::equality::FuzzyEq,
     };
 
     #[test]
@@ -157,5 +159,22 @@ mod tests {
         ]);
 
         assert_fuzzy_ne!(m1, m2);
+    }
+
+    #[test]
+    fn multiplying_a_4x4_matrix_by_the_identity_matrix() {
+        let matrix = Matrix::from([
+            [0.0, 1.0, 2.0, 4.0],
+            [1.0, 2.0, 4.0, 8.0],
+            [2.0, 4.0, 8.0, 16.0],
+            [4.0, 8.0, 16.0, 32.0],
+        ]);
+
+        let identity = Matrix::identity();
+
+        let expected = matrix;
+        let result = matrix * identity;
+
+        assert_fuzzy_eq!(result, expected);
     }
 }
