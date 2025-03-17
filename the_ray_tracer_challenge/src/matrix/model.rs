@@ -17,6 +17,14 @@ impl<const D: usize> Matrix<D> {
     pub fn new() -> Matrix<D> {
         Matrix::from([[0.0; D]; D])
     }
+
+    pub fn diagonal(value: f64) -> Matrix<D> {
+        let mut matrix = Matrix::new();
+        for i in 0..D {
+            matrix[i][i] = value;
+        }
+        return matrix;
+    }
 }
 
 impl<const D: usize> Index<usize> for Matrix<D> {
