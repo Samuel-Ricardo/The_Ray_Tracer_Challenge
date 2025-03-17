@@ -25,6 +25,10 @@ impl<const D: usize> Matrix<D> {
         }
         return matrix;
     }
+
+    pub(crate) fn identity() -> Matrix<D> {
+        Matrix::diagonal(1.0)
+    }
 }
 
 impl<const D: usize> Index<usize> for Matrix<D> {
