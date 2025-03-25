@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crate::tuple::{model::Tuple, test};
+    use crate::tuple::model::Tuple;
 
     #[test]
     fn vector_initialize_correctly() {
@@ -22,7 +22,7 @@ mod tests {
 
     #[test]
     fn not_is_vector_verifier() {
-        let v = Tuple::Point(1.0, 2.0, 3.0);
+        let v = Tuple::point(1.0, 2.0, 3.0);
 
         assert_eq!(v.is_vector(), false);
     }

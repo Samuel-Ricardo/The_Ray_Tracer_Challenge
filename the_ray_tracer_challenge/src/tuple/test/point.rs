@@ -4,7 +4,7 @@ mod tests {
 
     #[test]
     fn point_initialize_correctly() {
-        let p = Tuple::Point(1.0, 2.0, 3.0);
+        let p = Tuple::point(1.0, 2.0, 3.0);
 
         assert_eq!(p.x, 1.0);
         assert_eq!(p.y, 2.0);
@@ -15,7 +15,7 @@ mod tests {
 
     #[test]
     fn is_pointer_verifier() {
-        let p = Tuple::Point(1.0, 2.0, 3.0);
+        let p = Tuple::point(1.0, 2.0, 3.0);
 
         assert_eq!(p.is_point(), true);
     }
@@ -29,8 +29,8 @@ mod tests {
 
     #[test]
     fn sub_of_two_points() {
-        let t1 = Tuple::Point(3.0, -2.0, 5.0);
-        let t2 = Tuple::Point(-2.0, 3.0, 1.0);
+        let t1 = Tuple::point(3.0, -2.0, 5.0);
+        let t2 = Tuple::point(-2.0, 3.0, 1.0);
 
         let expected = Tuple::Vector(5.0, -5.0, 4.0);
         let result = t1 - t2;

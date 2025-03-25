@@ -1,7 +1,10 @@
 use std::fs::write;
 
 use crate::{
-    canvas::model::{color::Color, ppm::PpmConvertible, Canvas},
+    canvas::{
+        conversion::{png::Convertable, ppm::Convertible},
+        model::{color::Color, Canvas},
+    },
     scene::{
         model::{Environment, Pixel, Projectile},
         tick,
@@ -16,7 +19,7 @@ pub fn simulate_a_launch_and_plot_result_as_ppm() {
     );
 
     let projectile = Projectile::new(
-        Tuple::Point(0.0, 1.0, 0.0),
+        Tuple::point(0.0, 1.0, 0.0),
         Tuple::Vector(1.0, 1.8, 0.0).normalize() * 11.25,
     );
 
@@ -45,6 +48,9 @@ pub fn simulate_a_launch_and_plot_result_as_ppm() {
     println!("[WRITING] => ./output.ppm");
     let ppm = canvas.to_ppm();
     write("./output.ppm", ppm).expect("Could not write ouput.ppm to disk.");
+
+    let png = canvas.to_png();
+    write("./output.png", png).expect("Could not write ouput.png to disk.");
 
     println!("[FINISHED] | FILE SAVED => [./output.ppm]");
 }
