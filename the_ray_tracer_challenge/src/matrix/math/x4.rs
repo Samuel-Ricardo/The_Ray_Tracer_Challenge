@@ -124,6 +124,7 @@ impl Matrix<4> {
         ])
     }
 
+    #[rustfmt::skip]
     pub fn scaling(x: f64, y: f64, z: f64) -> Matrix<4> {
         Matrix::from([
             [x, 0.0, 0.0, 0.0],
@@ -131,5 +132,15 @@ impl Matrix<4> {
             [0.0, 0.0, z, 0.0],
             [0.0, 0.0, 0.0, 1.0],
         ])
+    }
+
+    #[rustfmt::skip]
+    pub fn rotation_x(r: f64) -> Matrix<4> {   
+        Matrix::from([
+            [1.0,     0.0,      0.0, 0.0],
+            [0.0, r.cos(), -r.sin(), 0.0],
+            [0.0, r.sin(),  r.cos(), 0.0],
+            [0.0,     0.0,      0.0, 1.0],
+    ])
     }
 }
