@@ -1,14 +1,26 @@
 #[cfg(test)]
 mod matrix_translation_test {
-    use crate::{assert_fuzzy_eq, matrix::model::Matrix, tuple::model::Tuple};
+    use crate::{matrix::model::Matrix, tuple::model::Tuple};
 
     #[test]
     fn multiplying_by_a_translation_matrix() {
         let transform = Matrix::translation(5.0, -3.0, 2.0);
         let p = Tuple::point(-3.0, 4.0, 5.0);
-        let expected = Tuple::point(2.0, 1.0, 7.0);
+        let expected_result = Tuple::point(2.0, 1.0, 7.0);
 
-        let result = transform * p;
-        assert_fuzzy_eq!(result, expected);
+        let actual_result = transform * p;
+        assert_eq!(actual_result, expected_result);
+    }
+
+    #[test]
+    fn multiplying_by_the_inverse_of_a_translation_matrix() {
+        let transform = Matrix::translation(5.0, -3.0, 2.0);
+        let inverse_transform = transform.inverse();
+
+        let p = Tuple::point(-3.0, 4.0, 5.0);
+        let expected_result = Tuple::point(-8.0, 7.0, 3.0);
+
+        let actual_result = inverse_transform * p;
+        assert_eq!(actual_result, expected_result);
     }
 }
