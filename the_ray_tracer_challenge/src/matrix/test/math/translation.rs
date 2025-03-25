@@ -56,4 +56,16 @@ mod matrix_translation_test {
 
         assert_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn multiplying_by_the_inverse_of_a_scaling_matrix() {
+        let transform = Matrix::scaling(2.0, 3.0, 4.0);
+        let inverse_transform = transform.inverse();
+        let v = Tuple::vector(-4.0, 6.0, 8.0);
+
+        let expected_result = Tuple::vector(-2.0, 2.0, 2.0);
+        let actual_result = inverse_transform * v;
+
+        assert_eq!(actual_result, expected_result);
+    }
 }
