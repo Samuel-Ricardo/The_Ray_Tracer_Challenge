@@ -1,6 +1,9 @@
 use self::color::Color;
 use self::ppm::PpmConvertible;
 
+use super::conversion::ppm::Convertible;
+use super::conversion::rgba32;
+
 pub mod color;
 pub mod ppm;
 
@@ -109,15 +112,24 @@ impl Sized for Canvas {
     }
 }
 
-impl PpmConvertible for Canvas {
-    fn to_ppm(&self) -> Vec<u8> {
-        let header = self.build_ppm_header();
-        let pixel_data = self.build_ppm_pixel_data();
+impl rgba32::Convertible for Canvas {
+    fn to_rgba32(&self) -> Vec<u8> {
+        let mut data: Vec<u8> = Vec::new();
 
-        let mut ppm = Vec::new();
-        ppm.extend(header);
-        ppm.extend(pixel_data);
+        for pixel in self.pixels.iter() {
+            let clamped_color = pixel.clamp(0.0, 0.1);
 
-        return ppm;
+            let r: u8 = (clamped_color.red * 255.0).round() as u8;
+            let g: u8 = (clamped_color.green * 255.0).round() as u8;
+            let b: u8 = (clamped_color.blue * 255.0).round() as u8;
+            let a: u8 = 255;
+
+            data.push(r);
+            data.push(g);
+            data.push(b);
+            data.push(a);
+        }
+
+        return data;
     }
 }
