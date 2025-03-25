@@ -22,7 +22,7 @@ mod tests {
 
     #[test]
     fn not_is_pointer_verifier() {
-        let p = Tuple::Vector(1.0, 2.0, 3.0);
+        let p = Tuple::vector(1.0, 2.0, 3.0);
 
         assert_eq!(p.is_point(), false);
     }
@@ -32,7 +32,7 @@ mod tests {
         let t1 = Tuple::point(3.0, -2.0, 5.0);
         let t2 = Tuple::point(-2.0, 3.0, 1.0);
 
-        let expected = Tuple::Vector(5.0, -5.0, 4.0);
+        let expected = Tuple::vector(5.0, -5.0, 4.0);
         let result = t1 - t2;
 
         assert_eq!(result, expected);

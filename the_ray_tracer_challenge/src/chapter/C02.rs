@@ -14,13 +14,13 @@ use crate::{
 
 pub fn simulate_a_launch_and_plot_result_as_ppm() {
     let environment = Environment::new(
-        Tuple::Vector(0.0, -0.1, 0.0),
-        Tuple::Vector(-0.02, 0.0, 0.0),
+        Tuple::vector(0.0, -0.1, 0.0),
+        Tuple::vector(-0.02, 0.0, 0.0),
     );
 
     let projectile = Projectile::new(
         Tuple::point(0.0, 1.0, 0.0),
-        Tuple::Vector(1.0, 1.8, 0.0).normalize() * 11.25,
+        Tuple::vector(1.0, 1.8, 0.0).normalize() * 11.25,
     );
 
     let mut canvas = Canvas::new(900, 500);

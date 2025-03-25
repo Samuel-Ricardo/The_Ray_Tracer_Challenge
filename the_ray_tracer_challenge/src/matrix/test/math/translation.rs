@@ -23,4 +23,11 @@ mod matrix_translation_test {
         let actual_result = inverse_transform * p;
         assert_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn translation_does_not_affect_vectors() {
+        let transform = Matrix::translation(5.0, -3.0, 2.0);
+        let v = Tuple::vector(-3.0, 4.0, 5.0);
+        let expected_result = Tuple::vector(-3.0, 4.0, 5.0);
+    }
 }

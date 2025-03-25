@@ -26,7 +26,7 @@ mod tests {
     #[test]
     fn substracting_vector_from_point() {
         let t1 = Tuple::point(3.0, -2.0, 5.0);
-        let t2 = Tuple::Vector(-2.0, 3.0, 1.0);
+        let t2 = Tuple::vector(-2.0, 3.0, 1.0);
 
         let expected = Tuple::point(5.0, -5.0, 4.0);
         let result = t1 - t2;
@@ -37,10 +37,10 @@ mod tests {
 
     #[test]
     fn substracting_a_vector_from_a_vector() {
-        let zero = Tuple::Vector(0.0, 0.0, 0.0);
-        let vector = Tuple::Vector(2.0, 3.0, 1.0);
+        let zero = Tuple::vector(0.0, 0.0, 0.0);
+        let vector = Tuple::vector(2.0, 3.0, 1.0);
 
-        let expected = Tuple::Vector(-2.0, -3.0, -1.0);
+        let expected = Tuple::vector(-2.0, -3.0, -1.0);
         let result = zero - vector;
 
         assert_eq!(result, expected);
