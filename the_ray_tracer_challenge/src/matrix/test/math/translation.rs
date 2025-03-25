@@ -68,4 +68,15 @@ mod matrix_translation_test {
 
         assert_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn reflection_is_scaling_by_a_negative() {
+        let transform = Matrix::scaling(-1.0, 1.0, 1.0);
+        let p = Tuple::point(2.0, 3.0, 4.0);
+
+        let expected_result = Tuple::point(-2.0, 3.0, 4.0);
+        let actual_result = transform * p;
+
+        assert_eq!(actual_result, expected_result);
+    }
 }
