@@ -45,4 +45,15 @@ mod matrix_translation_test {
 
         assert_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn a_scaling_matrix_applied_to_a_vector() {
+        let transform = Matrix::scaling(2.0, 3.0, 4.0);
+        let v = Tuple::vector(-4.0, 6.0, 8.0);
+
+        let expected_result = Tuple::vector(-8.0, 18.0, 32.0);
+        let actual_result = transform * v;
+
+        assert_eq!(actual_result, expected_result);
+    }
 }
