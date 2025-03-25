@@ -1,3 +1,5 @@
+mod translation;
+
 #[cfg(test)]
 mod tests {
     use crate::{assert_fuzzy_eq, matrix::model::Matrix, utils::equality::FuzzyEq};
