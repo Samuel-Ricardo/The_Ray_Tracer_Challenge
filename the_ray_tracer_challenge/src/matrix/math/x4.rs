@@ -153,4 +153,14 @@ impl Matrix<4> {
           [     0.0, 0.0,     0.0, 1.0],
         ])
     }
+
+    #[rustfmt::skip] 
+    pub fn rotation_z(r: f64) -> Matrix<4> {
+        Matrix::from([
+            [r.cos(), -r.sin(), 0.0, 0.0],
+            [r.sin(),  r.cos(), 0.0, 0.0],
+            [    0.0,      0.0, 1.0, 0.0],
+            [    0.0,      0.0, 0.0, 1.0],
+        ])
+    }
 }
