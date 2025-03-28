@@ -73,4 +73,16 @@ mod matrix_scaling_test {
 
         assert_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn rotating_a_point_around_the_z_axis_half_quarter() {
+        let half_quarter = Matrix::rotation_z(PI / 4.0);
+        let point = Tuple::point(0.0, 1.0, 0.0);
+
+        let expected_result =
+            Tuple::point(-(2.0 as f64).sqrt() / 2.0, (2.0 as f64).sqrt() / 2.0, 0.0);
+        let actual_result = half_quarter * point;
+
+        assert_eq!(actual_result, expected_result);
+    }
 }
