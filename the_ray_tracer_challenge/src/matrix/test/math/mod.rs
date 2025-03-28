@@ -1,5 +1,6 @@
 mod rotation;
 mod scaling;
+mod shearing;
 mod translation;
 
 #[cfg(test)]
