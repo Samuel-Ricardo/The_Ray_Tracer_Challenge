@@ -143,4 +143,14 @@ impl Matrix<4> {
             [0.0,     0.0,      0.0, 1.0],
     ])
     }
+
+    #[rustfmt::skip]
+    pub fn rotation_y(r: f64) -> Matrix<4> {
+        Matrix::from([
+          [ r.cos(), 0.0, r.sin(), 0.0],
+          [     0.0, 1.0,     0.0, 0.0],
+          [-r.sin(), 0.0, r.cos(), 0.0],
+          [     0.0, 0.0,     0.0, 1.0],
+        ])
+    }
 }
