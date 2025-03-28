@@ -1,8 +1,8 @@
+use crate::utils::equality::FuzzyEq;
+
 mod math;
 mod point;
 mod vector;
-
-use crate::utils::equality::FuzzyEq;
 
 #[derive(Copy, Clone, Debug)]
 pub struct Tuple {
@@ -18,12 +18,12 @@ impl Tuple {
     }
 }
 
-impl FuzzyEq<&Tuple> for Tuple {
-    fn fuzzy_eq(&self, other: &Self) -> bool {
+impl FuzzyEq<Tuple> for Tuple {
+    fn fuzzy_eq(&self, other: Self) -> bool {
         self.x == other.x && self.y == other.y && self.z == other.z && self.w == other.w
     }
 
-    fn fuzzy_ne(&self, other: &Self) -> bool {
+    fn fuzzy_ne(&self, other: Self) -> bool {
         !self.fuzzy_eq(other)
     }
 }
