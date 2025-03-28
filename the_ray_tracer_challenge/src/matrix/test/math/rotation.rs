@@ -62,4 +62,15 @@ mod matrix_scaling_test {
 
         assert_eq!(actual_result, expected_result);
     }
+
+    #[test]
+    fn rotating_a_point_around_the_y_axis_full_quarter() {
+        let full_quarter = Matrix::rotation_y(PI / 2.0);
+        let point = Tuple::point(0.0, 0.0, 1.0);
+
+        let expected_result = Tuple::point(1.0, 0.0, 0.0);
+        let actual_result = full_quarter * point;
+
+        assert_eq!(actual_result, expected_result);
+    }
 }
