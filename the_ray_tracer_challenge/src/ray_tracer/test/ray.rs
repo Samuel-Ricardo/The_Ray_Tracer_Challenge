@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod ray_test {
-    use crate::{canvas::test, matrix::model::Matrix, raytracer::ray::Ray, tuple::model::Tuple};
+    use crate::{canvas::test, matrix::model::Matrix, ray_tracer::ray::Ray, tuple::model::Tuple};
 
     #[test]
     fn create_and_query_a_ray() {
