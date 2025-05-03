@@ -1,4 +1,4 @@
-use crate::tuple::model::Tuple;
+use crate::{matrix::model::Matrix, tuple::model::Tuple};
 
 pub struct Ray {
     origin: Tuple,
@@ -14,7 +14,14 @@ impl Ray {
         Ray { origin, direction }
     }
 
-    pub fn position(&self, t: f64) -> Tuple {
-        self.origin + self.direction * t
+    pub fn position(&self, distance: f64) -> Tuple {
+        self.origin + self.direction * distance
+    }
+
+    pub fn transform(&self, m: Matrix<4>) -> Self {
+        Ray {
+            origin: m * self.origin,
+            direction: m * self.direction,
+        }
     }
 }
