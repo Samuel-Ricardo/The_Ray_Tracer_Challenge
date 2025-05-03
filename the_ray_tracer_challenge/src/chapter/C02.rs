@@ -32,11 +32,9 @@ pub fn simulate_a_launch_and_plot_result_as_ppm() {
     let mut iteration: i32 = 0;
 
     while current.position.y > 0.0 {
-        println!("{}: {:?}", iteration, current);
-
         match Pixel::from_point_for_canvas(current.position, &canvas) {
             Pixel::Coordinate { x, y } => canvas.write_pixel(x, y, color),
-            Pixel::OutOfBounds => {}
+            Pixel::OutOfBounds { x, y } => {}
         }
 
         current = tick(&environment, &current);
