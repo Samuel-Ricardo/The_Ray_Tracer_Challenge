@@ -7,6 +7,7 @@ mod scene;
 mod tuple;
 #[macro_use]
 mod utils;
+mod raytracer;
 
 fn main() {
     // NOTE: [DEMO] | CHAPTER - 01 => simulate_physics_with_a_launch();
