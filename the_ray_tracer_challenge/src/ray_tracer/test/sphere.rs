@@ -94,4 +94,17 @@ mod sphere_test {
         assert_eq!(3.0, intersections[0].value);
         assert_eq!(7.0, intersections[1].value);
     }
+
+    #[test]
+    fn intersecting_a_translated_sphere_with_a_ray() {
+        let origin = Tuple::point(0.0, 0.0, -5.0);
+        let direction = Tuple::vector(0.0, 0.0, 1.0);
+
+        let ray = Ray::new(origin, direction);
+        let sphere = Sphere::new(Some(Matrix::translation(5.0, 0.0, 0.0)));
+
+        let intersections = sphere.intersect(ray);
+
+        assert_eq!(0, intersections.len());
+    }
 }
