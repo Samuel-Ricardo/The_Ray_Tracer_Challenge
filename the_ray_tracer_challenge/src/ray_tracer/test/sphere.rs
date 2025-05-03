@@ -69,4 +69,14 @@ mod sphere_test {
         let sphere = Sphere::new(None);
         assert_eq!(Matrix::identity(), sphere.transform);
     }
+
+    #[test]
+    fn changing_a_sphere_transformation() {
+        let mut sphere = Sphere::new(None);
+        let matrix = Matrix::translation(2.0, 3.0, 4.0);
+
+        sphere.transform = matrix;
+
+        assert_eq!(matrix, sphere.transform);
+    }
 }
