@@ -79,4 +79,19 @@ mod sphere_test {
 
         assert_eq!(matrix, sphere.transform);
     }
+
+    #[test]
+    fn intersecting_a_scaled_sphere_with_a_ray() {
+        let origin = Tuple::point(0.0, 0.0, -5.0);
+        let direction = Tuple::vector(0.0, 0.0, 1.0);
+
+        let ray = Ray::new(origin, direction);
+        let sphere = Sphere::new(Some(Matrix::scaling(2.0, 2.0, 2.0)));
+
+        let intersections = sphere.intersect(ray);
+
+        assert_eq!(2, intersections.len());
+        assert_eq!(3.0, intersections[0].value);
+        assert_eq!(7.0, intersections[1].value);
+    }
 }
