@@ -1,1 +1,2 @@
-mod ray;
+mod ray;
+mod sphere;
