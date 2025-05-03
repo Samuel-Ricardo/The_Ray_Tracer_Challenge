@@ -1,6 +1,7 @@
 #[cfg(test)]
 mod sphere_test {
     use crate::{
+        matrix::model::Matrix,
         ray_tracer::{ray::Ray, sphere::Sphere},
         tuple::model::Tuple,
     };
@@ -61,5 +62,11 @@ mod sphere_test {
         assert_eq!(2, intersections.len());
         assert_eq!(-6.0, intersections[0].value);
         assert_eq!(-4.0, intersections[1].value);
+    }
+
+    #[test]
+    fn a_sphere_default_transform() {
+        let sphere = Sphere::new(None);
+        assert_eq!(Matrix::identity(), sphere.transform);
     }
 }
