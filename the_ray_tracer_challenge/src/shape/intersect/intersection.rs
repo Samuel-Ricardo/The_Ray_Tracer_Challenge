@@ -1,4 +1,4 @@
-use std::f64::EPSILON;
+use std::{f64::EPSILON, ops::Index};
 
 use crate::{ray_tracer::ray::Ray, shape::root::body::Body};
 
@@ -76,5 +76,13 @@ impl Intersections {
 impl From<Vec<Intersection>> for Intersections {
     fn from(intersections: Vec<Intersection>) -> Self {
         Self::new(intersections)
+    }
+}
+
+impl Index<usize> for Intersections {
+    type Output = Intersection;
+
+    fn index(&self, index: usize) -> &Self::Output {
+        &self.data[index]
     }
 }
