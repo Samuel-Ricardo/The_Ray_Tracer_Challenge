@@ -1,6 +1,7 @@
 use super::intersection::Intersection;
 use crate::tuple::model::Tuple;
 
+#[derive(Debug, Clone)]
 pub struct ComputedIntersection<'i> {
     pub intersection: &'i Intersection,
     pub point: Tuple,
