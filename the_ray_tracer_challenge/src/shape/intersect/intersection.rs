@@ -72,3 +72,9 @@ impl Intersections {
         None
     }
 }
+
+impl From<Vec<Intersection>> for Intersections {
+    fn from(intersections: Vec<Intersection>) -> Self {
+        Self::new(intersections)
+    }
+}
