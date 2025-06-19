@@ -42,3 +42,15 @@ impl Intersection {
 pub struct Intersections {
     pub data: Vec<Intersection>,
 }
+
+impl Intersections {
+    pub fn new(mut intersections: Vec<Intersection>) -> Self {
+        intersections.sort_unstable_by(|first, second| {
+            first.distance.partial_cmp(&second.distance).unwrap()
+        });
+
+        return Intersections {
+            data: intersections,
+        };
+    }
+}
