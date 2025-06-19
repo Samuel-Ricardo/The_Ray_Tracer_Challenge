@@ -53,4 +53,8 @@ impl Intersections {
             data: intersections,
         };
     }
+
+    pub fn len(&self) -> usize {
+        self.data.len()
+    }
 }
