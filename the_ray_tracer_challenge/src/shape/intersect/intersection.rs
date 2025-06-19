@@ -61,4 +61,14 @@ impl Intersections {
     pub fn is_empty(&self) -> bool {
         self.data.is_empty()
     }
+
+    pub fn hit(&self) -> Option<&Intersection> {
+        for intersection in self.data.iter() {
+            if intersection.distance > 0.0 {
+                return Some(intersection);
+            }
+        }
+
+        None
+    }
 }
