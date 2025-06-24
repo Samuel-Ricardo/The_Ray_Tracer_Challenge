@@ -22,4 +22,14 @@ pub trait Intersectable {
                 .collect(),
         )
     }
+
+    fn normal_at(&self, point: Tuple) -> Tuple {
+        let object_space_point = self.transform().inverse() * point;
+        let object_normal = self.normal_at_in_object_space(object_space_point);
+
+        let mut world_normal = self.transform().inverse().transpose() * object_normal;
+
+        world_normal.w = 0.0;
+        world_normal.normalize()
+    }
 }
