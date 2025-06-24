@@ -11,4 +11,15 @@ pub trait Intersectable {
     fn transform(&self) -> Matrix<4>;
     fn intersect_in_object_space(&self, object_space_ray: Ray) -> Vec<(f64, Body)>;
     fn normal_at_in_object_space(&self, object_space_point: Tuple) -> Tuple;
+
+    fn intersect(&self, ray: Ray) -> Intersections {
+        let object_space_ray = ray.transform(self.transform().inverse());
+        let ts = self.intersect_in_object_space(object_space_ray);
+
+        Intersections::new(
+            ts.into_iter()
+                .map(|(t, body)| Intersection::new(t, ray, body))
+                .collect(),
+        )
+    }
 }
