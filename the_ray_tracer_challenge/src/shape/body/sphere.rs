@@ -77,4 +77,8 @@ impl Intersectable for Sphere {
     fn material(&self) -> Material {
         self.material
     }
+
+    fn transform(&self) -> Matrix<4> {
+        self.transform
+    }
 }
