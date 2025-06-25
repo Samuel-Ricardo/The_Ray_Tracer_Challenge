@@ -73,4 +73,8 @@ impl Intersectable for Sphere {
     fn normal_at_in_object_space(&self, object_space_point: Tuple) -> Tuple {
         (object_space_point - Tuple::zero_point()).normalize()
     }
+
+    fn material(&self) -> Material {
+        self.material
+    }
 }
