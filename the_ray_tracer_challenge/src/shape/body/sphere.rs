@@ -27,4 +27,9 @@ impl Sphere {
         self.material = material;
         return self;
     }
+
+    pub fn with_transform(mut self, transfor: Matrix<4>) -> Self {
+        self.transform = transfor;
+        return self;
+    }
 }
