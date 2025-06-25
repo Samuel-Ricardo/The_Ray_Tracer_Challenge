@@ -1,4 +1,4 @@
-use crate::{matrix::model::Matrix, shape::material::Material};
+use crate::{matrix::model::Matrix, shape::material::Material, utils::equality::FuzzyEq};
 
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub struct Sphere {
@@ -31,5 +31,11 @@ impl Sphere {
     pub fn with_transform(mut self, transfor: Matrix<4>) -> Self {
         self.transform = transfor;
         return self;
+    }
+}
+
+impl FuzzyEq<&Sphere> for Sphere {
+    fn fuzzy_eq(&self, other: &Sphere) -> bool {
+        self.transform.fuzzy_eq(other.transform) && self.material.fuzzy_eq(other.material)
     }
 }
