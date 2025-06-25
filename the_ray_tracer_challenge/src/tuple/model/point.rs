@@ -8,4 +8,8 @@ impl Tuple {
     pub fn is_point(&self) -> bool {
         self.w == 1.0
     }
+
+    pub fn zero_point() -> Tuple {
+        Tuple::point(0.0, 0.0, 0.0)
+    }
 }
