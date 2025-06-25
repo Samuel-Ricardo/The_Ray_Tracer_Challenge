@@ -22,4 +22,9 @@ impl Sphere {
             material,
         }
     }
+
+    pub fn with_material(mut self, material: Material) -> Self {
+        self.material = material;
+        return self;
+    }
 }
