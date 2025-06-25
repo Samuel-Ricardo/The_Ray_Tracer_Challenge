@@ -1,0 +1,7 @@
+use crate::{matrix::model::Matrix, shape::material::Material};
+
+#[derive(Copy, Clone, Debug, PartialEq)]
+pub struct Sphere {
+    pub transform: Matrix<4>,
+    pub material: Material,
+}
