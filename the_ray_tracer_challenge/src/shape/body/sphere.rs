@@ -14,3 +14,12 @@ impl Default for Sphere {
         }
     }
 }
+
+impl Sphere {
+    pub fn new(material: Material, transform: Matrix<4>) -> Self {
+        Sphere {
+            transform,
+            material,
+        }
+    }
+}
