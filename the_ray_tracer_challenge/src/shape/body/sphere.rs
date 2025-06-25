@@ -5,3 +5,12 @@ pub struct Sphere {
     pub transform: Matrix<4>,
     pub material: Material,
 }
+
+impl Default for Sphere {
+    fn default() -> Self {
+        Self {
+            transform: Matrix::identity(),
+            material: Default::default(),
+        }
+    }
+}
