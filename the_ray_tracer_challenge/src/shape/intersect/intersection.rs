@@ -1,8 +1,8 @@
 use std::{f64::EPSILON, ops::Index};
 
-use crate::{ray_tracer::ray::Ray, shape::root::body::Body};
+use crate::{ray_tracer::ray::Ray, shape::body::Body};
 
-use super::computed::ComputedIntersection;
+use super::{computed::ComputedIntersection, intersectables::Intersectable};
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Intersection {
@@ -24,7 +24,7 @@ impl Intersection {
         let position = self.ray.position(self.distance);
         let mut normal_v = self.body.normal_at(position);
         let eye_v = -self.ray.direction;
-        let inside = normal_v.dot(eye_v) < 0.0;
+        let inside = normal_v.dot(&eye_v) < 0.0;
 
         if inside {
             normal_v = -normal_v;
