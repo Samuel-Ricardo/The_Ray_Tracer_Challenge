@@ -1,10 +1,11 @@
-use std::collections::btree_set::Intersection;
-
 use crate::{
-    matrix::model::Matrix, ray_tracer::ray::Ray, shape::root::body::Body, tuple::model::Tuple,
+    matrix::model::Matrix,
+    ray_tracer::ray::Ray,
+    shape::{body::Body, material::Material},
+    tuple::model::Tuple,
 };
 
-use super::intersection::Intersections;
+use super::intersection::{Intersection, Intersections};
 
 pub trait Intersectable {
     fn material(&self) -> Material;
