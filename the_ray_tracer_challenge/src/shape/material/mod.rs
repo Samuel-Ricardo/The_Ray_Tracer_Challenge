@@ -15,3 +15,9 @@ impl Default for Material {
         Material::from(Phong::default())
     }
 }
+
+impl From<Phong> for Material {
+    fn from(phong: Phong) -> Self {
+        Material::Phong(phong)
+    }
+}
