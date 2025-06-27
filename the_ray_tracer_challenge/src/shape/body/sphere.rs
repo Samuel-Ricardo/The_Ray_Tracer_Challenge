@@ -49,7 +49,7 @@ impl FuzzyEq<&Sphere> for Sphere {
 }
 
 impl Intersectable for Sphere {
-    fn intersect_in_object_space(&self, object_space_ray: Ray) -> Vec<(crate::f64, Body)> {
+    fn intersect_in_object_space(&self, object_space_ray: Ray) -> Vec<(f64, Body)> {
         let sphere_to_ray = object_space_ray.origin - Tuple::zero_point();
 
         let a = object_space_ray.direction.dot(&object_space_ray.direction);
