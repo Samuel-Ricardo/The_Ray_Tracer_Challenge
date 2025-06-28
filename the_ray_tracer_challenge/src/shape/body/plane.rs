@@ -1,7 +1,12 @@
+use std::f64::EPSILON;
+
 use crate::{
     matrix::model::Matrix,
+    ray_tracer::ray::Ray,
     shape::{intersect::intersectables::Intersectable, material::Material},
 };
+
+use super::Body;
 
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub struct Plane {
@@ -44,5 +49,14 @@ impl Intersectable for Plane {
 
     fn transform(&self) -> Matrix<4> {
         self.transform
+    }
+
+    fn intersect_in_object_space(&self, object_space_ray: Ray) -> Vec<(f64, Body)> {
+        if object_space_ray.direction.y.abs() <= EPSILON {
+            return vec![];
+        }
+
+        let result = -object_space_ray.origin.y / object_space_ray.direction.y;
+        return vec![(result, Body::from(*self))];
     }
 }
