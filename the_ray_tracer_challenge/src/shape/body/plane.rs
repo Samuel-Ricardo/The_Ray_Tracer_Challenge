@@ -6,6 +6,15 @@ pub struct Plane {
     transform: Matrix<4>,
 }
 
+impl Default for Plane {
+    fn default() -> Self {
+        Self {
+            material: Default::default(),
+            transform: Matrix::identity(),
+        }
+    }
+}
+
 impl Plane {
     pub fn new(material: Material, transform: Matrix<4>) -> Self {
         Self {
