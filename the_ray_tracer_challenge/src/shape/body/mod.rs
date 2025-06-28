@@ -1,19 +1,25 @@
 pub mod plane;
 pub mod sphere;
 
-use self::sphere::Sphere;
+use self::{plane::Plane, sphere::Sphere};
 
 use super::intersect::intersectables::Intersectable;
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum Body {
     Sphere(Sphere),
-    Plane(),
+    Plane(Plane),
 }
 
 impl From<Sphere> for Body {
     fn from(sphere: Sphere) -> Self {
         Body::Sphere(sphere)
+    }
+}
+
+impl From<Plane> for Body {
+    fn from(plane: Plane) -> Self {
+        Body::Plane(plane)
     }
 }
 
