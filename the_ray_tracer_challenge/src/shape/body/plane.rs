@@ -27,4 +27,9 @@ impl Plane {
         self.material = material;
         return self;
     }
+
+    pub fn with_transform(mut self, transform: Matrix<4>) -> Self {
+        self.transform = transform;
+        return self;
+    }
 }
