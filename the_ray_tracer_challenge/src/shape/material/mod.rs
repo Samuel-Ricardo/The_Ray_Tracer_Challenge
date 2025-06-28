@@ -21,3 +21,11 @@ impl From<Phong> for Material {
         Material::Phong(phong)
     }
 }
+
+impl FuzzyEq<Material> for Material {
+    fn fuzzy_eq(&self, other: Material) -> bool {
+        match (self, other) {
+            (Material::Phong(ref m), Material::Phong(other)) => m.fuzzy_eq(other),
+        }
+    }
+}
