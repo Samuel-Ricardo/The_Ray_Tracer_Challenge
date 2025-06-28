@@ -41,4 +41,8 @@ impl Intersectable for Plane {
     fn material(&self) -> Material {
         self.material
     }
+
+    fn transform(&self) -> Matrix<4> {
+        self.transform
+    }
 }
