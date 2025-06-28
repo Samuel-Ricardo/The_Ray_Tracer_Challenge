@@ -1,4 +1,7 @@
-use crate::{matrix::model::Matrix, shape::material::Material};
+use crate::{
+    matrix::model::Matrix,
+    shape::{intersect::intersectables::Intersectable, material::Material},
+};
 
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub struct Plane {
@@ -31,5 +34,11 @@ impl Plane {
     pub fn with_transform(mut self, transform: Matrix<4>) -> Self {
         self.transform = transform;
         return self;
+    }
+}
+
+impl Intersectable for Plane {
+    fn material(&self) -> Material {
+        self.material
     }
 }
