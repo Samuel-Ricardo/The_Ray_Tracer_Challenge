@@ -2,7 +2,7 @@ use crate::{canvas::model::Canvas, tuple::model::Tuple};
 
 pub enum Pixel {
     Coordinate { x: usize, y: usize },
-    OutOfBounds,
+    OutOfBounds { x: f64, y: f64 },
 }
 
 impl Pixel {
@@ -14,12 +14,15 @@ impl Pixel {
         let rx = point.x.round();
         let ry = point.y.round();
 
+        if rx.is_sign_negative() || ry.is_sign_negative() {
+            return Pixel::OutOfBounds { x: rx, y: ry };
+        }
+
         let ux = rx as usize;
         let uy = ry as usize;
 
-        if rx.is_sign_negative() || ry.is_sign_negative() || ux > canvas.width || uy > canvas.height
-        {
-            return Pixel::OutOfBounds;
+        if ux > canvas.width || uy > canvas.height {
+            return Pixel::OutOfBounds { x: rx, y: ry };
         }
 
         // INFO:Invert y axis to fit Screen space as the (0,0) coordinate is top left
