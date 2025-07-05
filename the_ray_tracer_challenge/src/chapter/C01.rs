@@ -8,11 +8,11 @@ use crate::{
 
 pub fn simulate_physics_with_a_launch() {
     let environment = Environment::new(
-        Tuple::Vector(0.0, -0.1, 0.0),
-        Tuple::Vector(-0.0001, 0.0, 0.0),
+        Tuple::vector(0.0, -0.1, 0.0),
+        Tuple::vector(-0.0001, 0.0, 0.0),
     );
 
-    let projectile = Projectile::new(Tuple::Point(0.0, 1.0, 0.0), Tuple::Vector(0.02, 0.0, 0.0));
+    let projectile = Projectile::new(Tuple::point(0.0, 1.0, 0.0), Tuple::vector(0.02, 0.0, 0.0));
 
     println!("{:?}", environment);
 

@@ -1,7 +1,7 @@
 use super::Tuple;
 
 impl Tuple {
-    pub fn Vector(x: f64, y: f64, z: f64) -> Tuple {
+    pub fn vector(x: f64, y: f64, z: f64) -> Tuple {
         Tuple { x, y, z, w: 0.0 }
     }
 
@@ -26,7 +26,7 @@ impl Tuple {
             panic!("Cross product only defined for vectors");
         }
 
-        Tuple::Vector(
+        Tuple::vector(
             self.y * other.z - self.z * other.y,
             self.z * other.x - self.x * other.z,
             self.x * other.y - self.y * other.x,

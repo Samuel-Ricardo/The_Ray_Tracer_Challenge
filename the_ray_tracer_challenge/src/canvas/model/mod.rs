@@ -1,11 +1,8 @@
 use self::color::Color;
-use self::ppm::PpmConvertible;
 
-use super::conversion::ppm::Convertible;
 use super::conversion::rgba32;
 
 pub mod color;
-pub mod ppm;
 
 pub trait Sized {
     fn width(&self) -> usize;
@@ -117,7 +114,7 @@ impl rgba32::Convertible for Canvas {
         let mut data: Vec<u8> = Vec::new();
 
         for pixel in self.pixels.iter() {
-            let clamped_color = pixel.clamp(0.0, 0.1);
+            let clamped_color = pixel.clamp(0.0, 1.0);
 
             let r: u8 = (clamped_color.red * 255.0).round() as u8;
             let g: u8 = (clamped_color.green * 255.0).round() as u8;
