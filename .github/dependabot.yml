@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: "cargo"
+    directory: "/the_ray_tracer_challenge"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "⬆ | upgrade: deps -"
+    #ignore:
+    #  - dependency-name: "some-package-you-want-to-ignore"
+    #    versions: ["1.x.x"]  # optional
+  - package-ecosystem: "cargo"
+    directory: "/project"
+    schedule:
+      interval: "weekly"
+    # Enable security updates specifically
+    security-updates: true
