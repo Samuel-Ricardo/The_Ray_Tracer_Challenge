@@ -10,14 +10,3 @@ updates:
     open-pull-requests-limit: 5
     commit-message:
       prefix: "⬆ | upgrade: deps -"
-
-  - package-ecosystem: "cargo"
-    directory: "/project"
-    schedule:
-      interval: "weekly"
-    allow:
-      - dependency-type: "direct"
-      - dependency-type: "indirect"
-    open-pull-requests-limit: 5
-    commit-message:
-      prefix: "⬆ | upgrade: deps -"
