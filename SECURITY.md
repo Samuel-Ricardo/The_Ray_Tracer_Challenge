@@ -8,8 +8,8 @@ Please **do not** create a public issue or pull request that describes the vulne
 
 ### How to Report
 
-- **Email**: [your-security-email@example.com]
-- **GitHub Security Advisories**: [Enable via the repo settings → Security → Advisories]
+- **Email**: justsamuel.asm@gmail.com 
+- **GitHub Security Advisories**: https://github.com/Samuel-Ricardo/The_Ray_Tracer_Challenge/security/advisories
 
 Include as much detail as possible:
 - A description of the vulnerability.
