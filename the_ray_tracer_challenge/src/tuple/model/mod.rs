@@ -16,6 +16,10 @@ impl Tuple {
     pub fn new(x: f64, y: f64, z: f64, w: f64) -> Tuple {
         Tuple { x, y, z, w }
     }
+
+    pub fn reflect(&self, normal: Tuple) -> Tuple {
+        *self - normal * 2.0 * self.dot(&normal)
+    }
 }
 
 impl FuzzyEq<Tuple> for Tuple {

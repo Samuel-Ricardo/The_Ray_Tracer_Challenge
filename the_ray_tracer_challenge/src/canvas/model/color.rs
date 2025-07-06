@@ -1,3 +1,5 @@
+use crate::utils::equality::FuzzyEq;
+
 #[derive(Debug, Clone, Copy)]
 pub struct Color {
     pub red: f64,
@@ -20,5 +22,13 @@ impl Color {
             self.green.min(upper_bound).max(lower_bound),
             self.blue.min(upper_bound).max(lower_bound),
         )
+    }
+}
+
+impl FuzzyEq<Color> for Color {
+    fn fuzzy_eq(&self, other: Color) -> bool {
+        self.red.fuzzy_eq(other.red)
+            && self.green.fuzzy_eq(other.green)
+            && self.blue.fuzzy_eq(other.blue)
     }
 }
